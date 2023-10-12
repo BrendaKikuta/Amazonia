@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { RouteFormComponent } from './route-form.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('RouteFormComponent', () => {
+  let component: RouteFormComponent;
+  let fixture: ComponentFixture<RouteFormComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HomeComponent]
+      imports: [RouteFormComponent]
     });
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(RouteFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

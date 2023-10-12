@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-route-form',
+  templateUrl: './route-form.component.html',
+  styleUrls: ['./route-form.component.scss'],
   
 })
-export class HomeComponent { }
+export class RouteFormComponent { }

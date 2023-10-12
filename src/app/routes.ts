@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { RouteFormComponent } from './home/route-form.component';
 
 const routeConfig: Routes = [
     {
       path: '',
-      component: HomeComponent,
+      component: RouteFormComponent,
       title: 'AmazonIA'
     },
     // {
