@@ -38,6 +38,13 @@ $input-height: 75px;
 
   form {
     position: relative;
+
+    .warning-message {
+      margin: 0px;
+      font-size: 12px;
+      color: #ff185a;
+    }
+
     .input-section {
       width: 100%;
       position: absolute;
@@ -111,7 +118,7 @@ $input-height: 75px;
         width: 20%;
         background-color: rgb(212, 212, 255);
 
-        span {
+        button {
           display: flex;
           flex-direction: row;
           justify-content: space-around;
@@ -133,6 +140,16 @@ $input-height: 75px;
           font-weight: 100;
           width: 100%;
           border: 0;
+        }
+
+        &.active {
+          background-color: #80f972;
+
+          span {
+            i {
+              color: #49bb4d;
+            }
+          }
         }
       }
     }
