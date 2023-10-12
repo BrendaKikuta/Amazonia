@@ -1,12 +1,35 @@
-<div class="col-md-8 col-sm-12 route-form-container">
-  <p>Input the coordinates</p>
-  <div class="route-form">
-    <label for="drone-start">Drone start</label>
-    <input name="drone-start" type="text">
-    <label for="pick-up">Object pick-up</label>
-    <input name="pick-up" type="text">
-    <label for="drone-start">Delivery destination</label>
-    <input name="destination" type="text">
+<div class="route-form-container">
+  <div class="row route-form">
+    <div class="header">
+      <h2>Input the coordinates</h2>
+      <p>Please fill in all informations</p>
+    </div>
+    <form action="submit">
+      <div class="input-section">
+        <input type="text" placeholder="Drone Start" name="drone-start" id="droneStart">
+        <div class="animated-button">
+          <span class="next-button">
+            <i class="fa fa-arrow-up"></i>
+          </span>
+        </div>
+      </div>
+      <div class="input-section folded">
+        <input type="text" placeholder="Object pick-up" name="pick-up" id="pickUp">
+        <div class="animated-button">
+          <span class="next-button">
+            <i class="fa fa-arrow-up"></i>
+          </span>
+        </div>
+      </div>
+      <div class="input-section folded">
+        <input type="text" placeholder="Delivery destination" name="destination" id="destination">
+        <div class="animated-button">
+          <span class="next-button">
+            <i class="fa fa-arrow-up"></i>
+          </span>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
