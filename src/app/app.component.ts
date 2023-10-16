@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { RouteFormComponent } from './home/route-form.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   standalone: true,
-  imports:[ NgbModule, RouteFormComponent, RouterModule ],
+  imports:[ NgbModule, HomeComponent, RouterModule ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

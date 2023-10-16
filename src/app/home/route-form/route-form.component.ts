@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
-export enum key {
-  backspace = 'Backspace'
-} 
+import { RouteFormModel } from './route-form.model';
 
 @Component({
   standalone: true,
@@ -17,25 +14,15 @@ export class RouteFormComponent {
   showWarningMessage: boolean = false
   disabled: boolean = true
   startCoordinate: string = ''
+  routeFormModel = new RouteFormModel()
 
   getDroneStartCoordinate(value: KeyboardEvent): void {
-    this.setStartCoordinate(value)
+    this.startCoordinate = this.routeFormModel.setStartCoordinate(value, this.startCoordinate)
 
     if (this.startCoordinate.length > 3) return this.setErrorMessage()
 
     this.showWarningMessage = false
     this.disabled = false
-  }
-
-  private setStartCoordinate(value: KeyboardEvent): void {
-    switch (value.code) {
-      case key.backspace:
-        this.startCoordinate.slice(0, 1)
-        break;
-      default:
-        this.startCoordinate += value.key
-        break;
-    }
   }
 
   private setErrorMessage(): void {
