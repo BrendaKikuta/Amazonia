@@ -132,11 +132,9 @@ $input-height: 75px;
           &.active {
             background-color: #80f972;
             
-            span {
-              i {
-                color: #49bb4d;
-              }
-            }
+            i {
+              color: #49bb4d;
+            } 
           }
         }
       }
