@@ -31,4 +31,35 @@
       }
     }
   }
+
+  .pagination-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+
+    .pagination {
+      border: 1px solid #135156;
+      padding: 4px 16px;
+      transition: all 0.2s ease-in;
+
+      i {
+        font-size: 16px;
+        color: #135156;
+      }
+
+      &:first-child {
+        margin-right: 8px;
+      }
+
+      &:hover {
+        background-color: #135156;
+
+        i {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

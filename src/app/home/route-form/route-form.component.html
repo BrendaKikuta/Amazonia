@@ -1,7 +1,10 @@
 <div class="route-form">
   <div class="header">
+    <button [disabled]="disabledResetForm" id="resetFormButton" class="next-button" (click)="resetForm()">
+      <i class="fa fa-times"></i>
+    </button>
     <h2>Input the coordinates</h2>
-    <p>Please fill in all informations</p>
+    <p>{{inputText}}</p>
   </div>
   <form>
     <p *ngIf="showWarningMessage" class="warning-message">
@@ -10,13 +13,13 @@
     <div id="droneStart" class="input-section">
       <input
         [(ngModel)]="startCoordinate"
-        (ngModelChange)="getDroneStartCoordinate('droneStartButton', 'active')"
+        (ngModelChange)="verifyCoordinate($event, 'droneStartButton', 'active')"
         type="text"
-        placeholder="Drone Start"
+        placeholder="Ex: A12"
         name="drone-start"
       />
       <div class="animated-button">
-        <button [disabled]="disabled" id="droneStartButton" class="next-button" (click)="goToNextStep('droneStart', 'pickUp', 'folded')">
+        <button [disabled]="disabled" id="droneStartButton" class="next-button" (click)="goToNextStep('droneStart', 'pickUp', 'folded', 'Object pick-up')">
           <i class="fa fa-arrow-up"></i>
         </button>
       </div>
@@ -24,12 +27,13 @@
     <div id="pickUp" class="input-section folded">
       <input
         [(ngModel)]="pickUp"
+        (ngModelChange)="verifyCoordinate($event, 'pickUpButton', 'active')"
         type="text"
-        placeholder="Object pick-up"
+        placeholder="Ex: C18"
         name="pick-up"
       />
       <div class="animated-button">
-        <button [disabled]="disabled" id="pickUpButton" class="next-button">
+        <button [disabled]="disabled" id="pickUpButton" class="next-button" (click)="goToNextStep('pickUp', 'destination', 'folded', 'Delivery destination')">
           <i class="fa fa-arrow-up"></i>
         </button>
       </div>
@@ -37,13 +41,14 @@
     <div id="destination" class="input-section folded">
       <input
         [(ngModel)]="destination"
+        (ngModelChange)="verifyCoordinate($event, 'destinationButton', 'active')"
         type="text"
-        placeholder="Delivery destination"
+        placeholder="Ex: F4"
         name="destination"
       />
       <div class="animated-button">
-        <button [disabled]="disabled" id="destinationButton" class="next-button">
-          <i class="fa fa-arrow-up"></i>
+        <button [disabled]="disabled" id="destinationButton" class="next-button" (click)="calculateRoute()">
+          <i class="fa fa-paper-plane"></i>
         </button>
       </div>
     </div>

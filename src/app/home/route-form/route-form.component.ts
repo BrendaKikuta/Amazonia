@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { RouteFormModel } from './route-form.model';
+import { RoutesListService } from '../routes-list.service';
 
 @Component({
   standalone: true,
@@ -15,26 +16,53 @@ import { RouteFormModel } from './route-form.model';
 export class RouteFormComponent {
   showWarningMessage: boolean = false
   disabled: boolean = true
+  disabledResetForm: boolean = true
   startCoordinate: string = ''
   pickUp: string = ''
   destination: string = ''
-  routeFormModel = new RouteFormModel()
+  inputText: string = 'Drone Start'
+  routeFormModel: RouteFormModel = new RouteFormModel()
 
-  getDroneStartCoordinate(buttonId: string, className: string): void {
-    if (this.startCoordinate.length > 3 || (!this.startCoordinate || this.startCoordinate.length < 1)) return this.setErrorMessage(buttonId, className)
+  constructor(private routesListService: RoutesListService) {}
+
+  verifyCoordinate(coordinate: string, buttonId: string, className: string): void {
+    if (coordinate.length > 3 || (!coordinate || coordinate.length < 1)) return this.setErrorMessage(buttonId, className, coordinate.length)
 
     this.enableButton(buttonId, className)
   }
 
-  goToNextStep(currentSessionId: string, sessionId: string, className: string): void {
+  goToNextStep(currentSessionId: string, sessionId: string, className: string, text: string): void {
     this.routeFormModel.addClass(currentSessionId, className)
+    this.routeFormModel.addClass('resetFormButton', 'active')
     this.routeFormModel.removeClass(sessionId, className)
+
+    this.inputText = text
+    this.disabled = true
+    this.disabledResetForm = false
+  }
+
+  resetForm(): void {
+    this.showWarningMessage = false
+    this.disabled = true
+    this.disabledResetForm = true
+    this.startCoordinate = ''
+    this.pickUp = ''
+    this.destination = ''
+    this.inputText = 'Drone Start'
+
+    this.manageClasses()
   }
   
-  private setErrorMessage(buttonId: string, className: string): void {
+  calculateRoute() {
+    this.routesListService.getRoute({}).subscribe(response => {
+      console.log(response)
+    })
+  }
+
+  private setErrorMessage(buttonId: string, className: string, coordinateLength: number): void {
     this.routeFormModel.removeClass(buttonId, className)
 
-    if (this.startCoordinate.length > 3) {
+    if (coordinateLength > 3) {
       this.showWarningMessage = true  
       this.disabled = true  
     }
@@ -45,5 +73,15 @@ export class RouteFormComponent {
     this.disabled = false
 
     this.routeFormModel.addClass(buttonId, className)
+  }
+
+  private manageClasses(): void {
+    this.routeFormModel.removeClass('droneStart', 'folded')
+    this.routeFormModel.addClass('pickUp', 'folded')
+    this.routeFormModel.addClass('destination', 'folded')
+    this.routeFormModel.removeClass('droneStartButton', 'active')
+    this.routeFormModel.removeClass('pickUpButton', 'active')
+    this.routeFormModel.removeClass('destinationButton', 'active')
+    this.routeFormModel.removeClass('resetFormButton', 'active')
   }
 }
