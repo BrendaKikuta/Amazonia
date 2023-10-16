@@ -6,7 +6,7 @@
       <li
         *ngFor="
           let route of routes.slice(0, 10)
-            | paginate : { itemsPerPage: 5, currentPage: 1, totalItems: 10 }
+            | paginate : { itemsPerPage: 5, currentPage: page, totalItems: 10 }
         "
       >
         {{
@@ -23,10 +23,10 @@
       </li>
     </ul>
     <div class="pagination-controls">
-      <button class="pagination pagination-previous">
+      <button [disabled]="page === 1" id="paginationPrevious" class="pagination pagination-previous" (click)="previousPage('paginationPrevious', 'paginationNext')">
         <i class="fa fa-angle-left"></i>
       </button>
-      <button class="pagination pagination-next">
+      <button [disabled]="page > 1" id="paginationNext" class="pagination pagination-next active" (click)="nextPage('paginationNext', 'paginationPrevious')">
         <i class="fa fa-angle-right"></i>
       </button>
     </div>

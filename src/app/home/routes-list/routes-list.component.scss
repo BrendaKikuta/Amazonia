@@ -40,24 +40,34 @@
     margin-right: 10px;
 
     .pagination {
-      border: 1px solid #135156;
+      background-color: rgb(235, 235, 235);
+      border: 1px solid rgb(147, 147, 147);
       padding: 4px 16px;
       transition: all 0.2s ease-in;
-
+      
       i {
         font-size: 16px;
-        color: #135156;
+        color: rgb(147, 147, 147);
       }
-
+      
       &:first-child {
         margin-right: 8px;
       }
-
-      &:hover {
-        background-color: #135156;
-
+      
+      &.active {
+        border: 1px solid #135156;
+        
         i {
-          color: #fff;
+          color: #135156;
+
+        }
+        
+        &:hover {
+          background-color: #135156;
+  
+          i {
+            color: #fff;
+          }
         }
       }
     }

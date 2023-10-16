@@ -5,6 +5,7 @@ import { RoutesListService } from '../routes-list.service'
 import { DroneRoute } from '../interfaces/routes.interfaces'
 import { RoutesListModel } from './routes-list.model'
 import { NgxPaginationModule } from 'ngx-pagination'
+import { ManageClassesModel } from '../models/manage-classes.model'
 
 @Component({
   standalone: true,
@@ -15,10 +16,13 @@ import { NgxPaginationModule } from 'ngx-pagination'
 })
 
 export class RoutesListComponent implements OnInit {
+  manageClassesModel: ManageClassesModel = new ManageClassesModel()
+
   constructor(private routesListService: RoutesListService) {}
 
   routes: Array<DroneRoute> = []
   routesListModel: RoutesListModel = new RoutesListModel()
+  page: number = 1
 
   ngOnInit(): void {
     this.listRoutes()
@@ -35,5 +39,17 @@ export class RoutesListComponent implements OnInit {
         })
       })
     })
+  }
+
+  previousPage(currentButtonId: string, buttonId: string): void {
+    this.manageClassesModel.removeClass(currentButtonId, 'active')
+    this.manageClassesModel.addClass(buttonId, 'active')
+    this.page -= 1
+  }
+
+  nextPage(currentButtonId: string, buttonId: string): void {
+    this.manageClassesModel.removeClass(currentButtonId, 'active')
+    this.manageClassesModel.addClass(buttonId, 'active')
+    this.page += 1
   }
 }

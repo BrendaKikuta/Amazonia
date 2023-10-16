@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { RouteFormModel } from './route-form.model';
+import { ManageClassesModel } from '../models/manage-classes.model';
 import { RoutesListService } from '../routes-list.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class RouteFormComponent {
   pickUp: string = ''
   destination: string = ''
   inputText: string = 'Drone Start'
-  routeFormModel: RouteFormModel = new RouteFormModel()
+  manageClassesModel: ManageClassesModel = new ManageClassesModel()
 
   constructor(private routesListService: RoutesListService) {}
 
@@ -32,9 +32,9 @@ export class RouteFormComponent {
   }
 
   goToNextStep(currentSessionId: string, sessionId: string, className: string, text: string): void {
-    this.routeFormModel.addClass(currentSessionId, className)
-    this.routeFormModel.addClass('resetFormButton', 'active')
-    this.routeFormModel.removeClass(sessionId, className)
+    this.manageClassesModel.addClass(currentSessionId, className)
+    this.manageClassesModel.addClass('resetFormButton', 'active')
+    this.manageClassesModel.removeClass(sessionId, className)
 
     this.inputText = text
     this.disabled = true
@@ -60,7 +60,7 @@ export class RouteFormComponent {
   }
 
   private setErrorMessage(buttonId: string, className: string, coordinateLength: number): void {
-    this.routeFormModel.removeClass(buttonId, className)
+    this.manageClassesModel.removeClass(buttonId, className)
 
     if (coordinateLength > 3) {
       this.showWarningMessage = true  
@@ -72,16 +72,16 @@ export class RouteFormComponent {
     this.showWarningMessage = false
     this.disabled = false
 
-    this.routeFormModel.addClass(buttonId, className)
+    this.manageClassesModel.addClass(buttonId, className)
   }
 
   private manageClasses(): void {
-    this.routeFormModel.removeClass('droneStart', 'folded')
-    this.routeFormModel.addClass('pickUp', 'folded')
-    this.routeFormModel.addClass('destination', 'folded')
-    this.routeFormModel.removeClass('droneStartButton', 'active')
-    this.routeFormModel.removeClass('pickUpButton', 'active')
-    this.routeFormModel.removeClass('destinationButton', 'active')
-    this.routeFormModel.removeClass('resetFormButton', 'active')
+    this.manageClassesModel.removeClass('droneStart', 'folded')
+    this.manageClassesModel.addClass('pickUp', 'folded')
+    this.manageClassesModel.addClass('destination', 'folded')
+    this.manageClassesModel.removeClass('droneStartButton', 'active')
+    this.manageClassesModel.removeClass('pickUpButton', 'active')
+    this.manageClassesModel.removeClass('destinationButton', 'active')
+    this.manageClassesModel.removeClass('resetFormButton', 'active')
   }
 }
