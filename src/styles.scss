@@ -1,7 +1,14 @@
+html {
+  height: 100%;
+  display: flex;
+}
+
 body {
   background-image: url("./assets/images/home.png");
   background-size: 100%;
   font-family: "Roboto";
+  width: 100%;
+  margin: auto;
 }
 
 ul {

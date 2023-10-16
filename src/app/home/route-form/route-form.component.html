@@ -1,36 +1,51 @@
-<div class="route-form-container">
-  <div class="row route-form">
-    <div class="header">
-      <h2>Input the coordinates</h2>
-      <p>Please fill in all informations</p>
-    </div>
-    <form action="submit">
-      <p *ngIf="showWarningMessage" class="warning-message">Add a smaller coordinate</p>
-      <div class="input-section">
-        <input (keyup)="getDroneStartCoordinate($event)" type="text" placeholder="Drone Start" name="drone-start" id="droneStart">
-        <div class="animated-button">
-          <button [disabled]="disabled" class="next-button">
-            <i class="fa fa-arrow-up"></i>
-          </button>
-        </div>
-      </div>
-      <div class="input-section folded">
-        <input type="text" placeholder="Object pick-up" name="pick-up" id="pickUp">
-        <div class="animated-button">
-          <button [disabled]="disabled" class="next-button">
-            <i class="fa fa-arrow-up"></i>
-          </button>
-        </div>
-      </div>
-      <div class="input-section folded">
-        <input type="text" placeholder="Delivery destination" name="destination" id="destination">
-        <div class="animated-button">
-          <button [disabled]="disabled" class="next-button">
-            <i class="fa fa-arrow-up"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+<div class="route-form">
+  <div class="header">
+    <h2>Input the coordinates</h2>
+    <p>Please fill in all informations</p>
   </div>
+  <form action="submit">
+    <p *ngIf="showWarningMessage" class="warning-message">
+      Add a smaller coordinate
+    </p>
+    <div class="input-section">
+      <input
+        (keyup)="getDroneStartCoordinate($event)"
+        type="text"
+        placeholder="Drone Start"
+        name="drone-start"
+        id="droneStart"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" class="next-button">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <div class="input-section folded">
+      <input
+        type="text"
+        placeholder="Object pick-up"
+        name="pick-up"
+        id="pickUp"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" class="next-button">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <div class="input-section folded">
+      <input
+        type="text"
+        placeholder="Delivery destination"
+        name="destination"
+        id="destination"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" class="next-button">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
-
