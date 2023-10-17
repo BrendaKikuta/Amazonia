@@ -1,0 +1,66 @@
+@import "../../../../shared/styles/colors.scss";
+
+.route-calculated {
+  width: 510px;
+  background: $white;
+  border-radius: 15px 15px 15px 15px;
+  padding: 16px 0px;
+  margin-top: 80px;
+
+  .header {
+    padding: 0px 16px 16px 16px;
+    position: relative;
+    margin-bottom: 8px;
+    border-bottom: solid 1px $alto;
+
+    button {
+      position: absolute;
+      right: 8px;
+      bottom: 40px;
+
+      i {
+        font-size: 20px;
+        color: $radicalRed;
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      color: $mineShaft;
+      font-size: 23px;
+      margin: 0;
+    }
+
+    p {
+      word-spacing: 0px;
+      color: $regentGray;
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+
+  .route-calculated-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    padding: 0px 16px;
+
+    p {
+      font-weight: 700;
+      color: $mineShaft;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    span {
+      color: $regentGray;
+      font-size: 14px;
+    }
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}

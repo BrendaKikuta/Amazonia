@@ -1,0 +1,37 @@
+<div class="routes-list">
+  <div class="header">
+    <h2>Last deliverieas:</h2>
+    <span>List of last 10 deliverieas</span>
+  </div>
+
+  <div class="last-routes">
+    <ul>
+      <li
+        *ngFor="
+          let route of routes.slice(0, 10)
+            | paginate : { itemsPerPage: 5, currentPage: page, totalItems: 10 }
+        "
+      >
+        {{
+          "From " +
+            route.droneStart +
+            ", picking-up at " +
+            route.pickUp +
+            " to " +
+            route.done +
+            " in " +
+            route.time +
+            " seconds."
+        }}
+      </li>
+    </ul>
+    <div class="pagination-controls">
+      <button [disabled]="page === 1" id="paginationPrevious" class="pagination pagination-previous" (click)="previousPage('paginationPrevious', 'paginationNext')">
+        <i class="fa fa-angle-left"></i>
+      </button>
+      <button [disabled]="page > 1" id="paginationNext" class="pagination pagination-next active" (click)="nextPage('paginationNext', 'paginationPrevious')">
+        <i class="fa fa-angle-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

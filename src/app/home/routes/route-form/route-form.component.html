@@ -1,0 +1,70 @@
+<ng-container *ngIf="loading">
+  <app-loader></app-loader>
+</ng-container>
+
+<div *ngIf="!calculated" class="route-form">
+  <div class="header">
+    <button [disabled]="disabledResetForm" id="resetFormButton" class="next-button" (click)="resetForm()">
+      <i class="fa fa-times"></i>
+    </button>
+    <h2>Input the coordinates</h2>
+    <div class="route-form-rules">
+      <p>The data should be informed as 
+        if they were coordinates of a chessboard by letters on the horizontal axis
+        (A to H) and numbers on the vertical axis (1 to 8).
+      </p>
+    </div>
+    <p>{{inputText}}</p>
+  </div>
+  <form>
+    <p *ngIf="showWarningMessage" class="warning-message">
+      Add a smaller coordinate
+    </p>
+    <div id="droneStart" class="input-section">
+      <input
+        [(ngModel)]="startCoordinate"
+        (ngModelChange)="verifyCoordinate($event, 'droneStartButton', 'active')"
+        type="text"
+        placeholder="Ex: A1"
+        name="drone-start"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" id="droneStartButton" class="next-button" (click)="goToNextStep('droneStart', 'pickUp', 'folded', 'Object pick-up')">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <div id="pickUp" class="input-section folded">
+      <input
+        [(ngModel)]="pickUp"
+        (ngModelChange)="verifyCoordinate($event, 'pickUpButton', 'active')"
+        type="text"
+        placeholder="Ex: C8"
+        name="pick-up"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" id="pickUpButton" class="next-button" (click)="goToNextStep('pickUp', 'destination', 'folded', 'Delivery destination')">
+          <i class="fa fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <div id="destination" class="input-section folded">
+      <input
+        [(ngModel)]="destination"
+        (ngModelChange)="verifyCoordinate($event, 'destinationButton', 'active')"
+        type="text"
+        placeholder="Ex: F4"
+        name="destination"
+      />
+      <div class="animated-button">
+        <button [disabled]="disabled" id="destinationButton" class="next-button" (click)="calculateRoute()">
+          <i class="fa fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-container *ngIf="calculated">
+  <app-route-calculated (newSearch)="resetForm()"></app-route-calculated>
+</ng-container>

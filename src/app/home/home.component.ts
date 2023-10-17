@@ -1,12 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { RoutesComponent } from './routes/routes.component';
+import { LoaderComponent } from '../shared/loader/loader.component';
+
 @Component({
-  selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  
+  imports: [CommonModule, LoaderComponent, RoutesComponent],
+  selector: 'app-home',
+  templateUrl: './home.component.html'
 })
-export class HomeComponent { }
+
+export class HomeComponent {
+  loading: boolean = true
+
+  getLoading(): void {
+    this.loading = false
+  }
+}

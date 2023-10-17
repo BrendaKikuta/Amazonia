@@ -1,0 +1,6 @@
+<ng-container>
+  <app-routes (loading)="getLoading()"></app-routes>
+</ng-container>
+<ng-container *ngIf="loading">
+  <app-loader></app-loader>
+</ng-container>

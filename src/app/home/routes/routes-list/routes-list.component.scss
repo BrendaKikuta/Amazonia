@@ -1,0 +1,87 @@
+@import "../../../shared/styles/colors.scss";
+
+.routes-list {
+  background: $white; 
+  font-size: 20px;
+  width: 510px;
+  padding: 0.1em 0.5em 1em;
+  box-shadow:  0px 0px 100px rgba($black, .2);
+  border-radius: 15px 15px 15px 15px;
+  
+  .header {
+    padding: 8px 8px 2px 4%;
+    border-bottom: solid 1px $alto;
+
+    h2 {
+      font-weight: 700;
+      color: $mineShaft;
+      font-size: 20px;
+      margin: 0;
+      margin-bottom: -10px;
+    }
+
+    span {
+      color: $regentGray;
+      font-size: 12px;
+    }
+  }
+  
+  .last-routes {
+    ul {
+      padding: 0.1em 0.5em 0.1em;
+      margin: 0;
+
+      li {
+        color: saturate($blueDianne, 15%);
+        border-bottom: solid 1px $alto;
+        padding: 8px 8px 8px 2%;
+        font-size: 14px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .pagination-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+
+    .pagination {
+      background-color: $whiteLilac;
+      border: 1px solid $gray;
+      padding: 4px 16px;
+      transition: all 0.2s ease-in;
+      
+      i {
+        font-size: 16px;
+        color: $gray;
+      }
+      
+      &:first-child {
+        margin-right: 8px;
+      }
+      
+      &.active {
+        border: 1px solid $eden;
+        
+        i {
+          color: $eden;
+
+        }
+        
+        &:hover {
+          background-color: $eden;
+  
+          i {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
