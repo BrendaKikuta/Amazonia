@@ -71,7 +71,6 @@ export class RouteFormComponent {
     this.routesListService.getRoute(data).subscribe(response => {
       this.loading = false
       this.calculated = true
-      console.log(response)
     })
   }
   
