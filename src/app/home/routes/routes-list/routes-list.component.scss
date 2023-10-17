@@ -1,24 +1,27 @@
+@import "../../../shared/styles/colors.scss";
+
 .routes-list {
-  background: #FFF; 
+  background: $white; 
   font-size: 20px;
   width: 510px;
   padding: 0.1em 0.5em 1em;
-  box-shadow:  0px 0px 100px rgba(0, 0, 0, 0.2);
+  box-shadow:  0px 0px 100px rgba($black, .2);
   border-radius: 15px 15px 15px 15px;
   
   .header {
     padding: 8px 8px 2px 4%;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px $alto;
 
-    p {
+    h2 {
       font-weight: 700;
-      color: #333;
+      color: $mineShaft;
+      font-size: 20px;
       margin: 0;
       margin-bottom: -10px;
     }
 
     span {
-      color: rgb(134, 146, 155);
+      color: $regentGray;
       font-size: 12px;
     }
   }
@@ -29,8 +32,8 @@
       margin: 0;
 
       li {
-        color: saturate(#1B4A4E,15%);
-        border-bottom: solid 1px #ddd;
+        color: saturate($blueDianne, 15%);
+        border-bottom: solid 1px $alto;
         padding: 8px 8px 8px 2%;
         font-size: 14px;
 
@@ -49,14 +52,14 @@
     margin-right: 10px;
 
     .pagination {
-      background-color: rgb(235, 235, 235);
-      border: 1px solid rgb(147, 147, 147);
+      background-color: $whiteLilac;
+      border: 1px solid $gray;
       padding: 4px 16px;
       transition: all 0.2s ease-in;
       
       i {
         font-size: 16px;
-        color: rgb(147, 147, 147);
+        color: $gray;
       }
       
       &:first-child {
@@ -64,18 +67,18 @@
       }
       
       &.active {
-        border: 1px solid #135156;
+        border: 1px solid $eden;
         
         i {
-          color: #135156;
+          color: $eden;
 
         }
         
         &:hover {
-          background-color: #135156;
+          background-color: $eden;
   
           i {
-            color: #fff;
+            color: $white;
           }
         }
       }

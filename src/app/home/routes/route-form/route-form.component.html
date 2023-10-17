@@ -1,4 +1,8 @@
-<div class="route-form">
+<ng-container *ngIf="loading">
+  <app-loader></app-loader>
+</ng-container>
+
+<div *ngIf="!calculated" class="route-form">
   <div class="header">
     <button [disabled]="disabledResetForm" id="resetFormButton" class="next-button" (click)="resetForm()">
       <i class="fa fa-times"></i>
@@ -54,3 +58,7 @@
     </div>
   </form>
 </div>
+
+<ng-container *ngIf="calculated">
+  <app-route-calculated (newSearch)="resetForm()"></app-route-calculated>
+</ng-container>

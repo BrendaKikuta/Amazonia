@@ -8,8 +8,7 @@ import { RoutesListComponent } from './routes-list/routes-list.component';
   standalone: true,
   imports: [CommonModule, RoutesListComponent, RouteFormComponent],
   selector: 'app-routes',
-  templateUrl: './routes.component.html',
-  styleUrls: ['./routes.component.scss'],
+  templateUrl: './routes.component.html'
 })
 
 export class RoutesComponent {

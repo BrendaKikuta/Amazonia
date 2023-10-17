@@ -13,7 +13,7 @@ export class RoutesListService {
 
   getRoute(data: {}): Observable<{}> {
     return this.httpClient
-      .get(this.url, data).pipe(
+      .get(this.url, {params: data}).pipe(
         retry(3),
         catchError(this.handleError())
       )

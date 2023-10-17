@@ -8,8 +8,7 @@ import { LoaderComponent } from '../shared/loader/loader.component';
   standalone: true,
   imports: [CommonModule, LoaderComponent, RoutesComponent],
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './home.component.html'
 })
 
 export class HomeComponent {
