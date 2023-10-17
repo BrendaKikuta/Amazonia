@@ -7,3 +7,4 @@ WORKDIR /app
 RUN npm install -g @angular/cli@^16.2.4
 RUN npm install
 
+CMD ["nodemon", "--exec", "npm", "run"]

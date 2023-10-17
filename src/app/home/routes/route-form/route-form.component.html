@@ -66,5 +66,5 @@
 </div>
 
 <ng-container *ngIf="calculated">
-  <app-route-calculated (newSearch)="resetForm()"></app-route-calculated>
+  <app-route-calculated [caculatedRoute]="caculatedRoute" (newSearch)="resetForm()"></app-route-calculated>
 </ng-container>

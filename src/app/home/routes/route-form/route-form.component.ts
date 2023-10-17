@@ -6,6 +6,7 @@ import { LoaderComponent } from 'src/app/shared/loader/loader.component';
 import { ManageClassesModel } from '../../models/manage-classes.model';
 import { RoutesListService } from '../routes-list.service';
 import { RouteCalculatedComponent } from './route-calculated/route-calculated.component';
+import { DroneRoute } from '../../interfaces/routes.interfaces';
 
 @Component({
   standalone: true,
@@ -26,6 +27,7 @@ export class RouteFormComponent {
   manageClassesModel: ManageClassesModel = new ManageClassesModel()
   loading: boolean = false
   calculated: boolean = false
+  caculatedRoute: DroneRoute
   
   constructor(private routesListService: RoutesListService) {}
   
@@ -71,7 +73,18 @@ export class RouteFormComponent {
     this.routesListService.getRoute(data).subscribe(response => {
       this.loading = false
       this.calculated = true
+
+      this.setDroneCoordinates()
     })
+  }
+
+  private setDroneCoordinates(): void {
+    this.caculatedRoute = {
+      droneStart: this.startCoordinate,
+      pickUp: this.pickUp,
+      done: this.destination,
+      time: 300
+    }
   }
   
   private setErrorMessage(buttonId: string, className: string, coordinateLength: number): void {
