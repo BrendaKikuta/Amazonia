@@ -1,0 +1,11 @@
+version: '1.0'
+services:
+  angular-service:
+    container_name: amazonia
+    build: ./
+    volumes:
+      - .:/app
+    ports:
+      - '9001:9001'
+    command: >
+      bash -c "ng serve --host 0.0.0.0 --disable-host-check --port 9001"
