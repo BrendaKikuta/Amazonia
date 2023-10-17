@@ -20,7 +20,7 @@ export class RouteCalculatedComponent implements OnInit {
   }
 
   getSettedCoordinates(): void {
-    this.settedCoordinates = `Drone starts on ${this.caculatedRoute.droneStart}, picks up on ${this.caculatedRoute.pickUp}, and finish on ${this.caculatedRoute.done}`;
+    this.settedCoordinates = `Drone starts on ${this.caculatedRoute.droneStart.toUpperCase()}, picks up on ${this.caculatedRoute.pickUp.toUpperCase()}, and finish on ${this.caculatedRoute.done.toUpperCase()}.`
   }
 
   resetForm(): void {
