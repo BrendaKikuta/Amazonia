@@ -83,7 +83,7 @@ export class RouteFormComponent {
       droneStart: this.startCoordinate,
       pickUp: this.pickUp,
       done: this.destination,
-      time: 300
+      time: Math.floor(Math.random() * (999 - 100)) + 1000
     }
   }
   
