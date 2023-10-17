@@ -26,7 +26,7 @@ export class RouteFormComponent {
   constructor(private routesListService: RoutesListService) {}
 
   verifyCoordinate(coordinate: string, buttonId: string, className: string): void {
-    if (coordinate.length > 3 || (!coordinate || coordinate.length < 1)) return this.setErrorMessage(buttonId, className, coordinate.length)
+    if (coordinate.length > 2 || (!coordinate || coordinate.length < 1)) return this.setErrorMessage(buttonId, className, coordinate.length)
 
     this.enableButton(buttonId, className)
   }
@@ -54,7 +54,11 @@ export class RouteFormComponent {
   }
   
   calculateRoute() {
-    this.routesListService.getRoute({}).subscribe(response => {
+    const data = [this.startCoordinate] 
+
+    console.log(this.startCoordinate)
+      
+    this.routesListService.getRoute(data).subscribe(response => {
       console.log(response)
     })
   }
@@ -62,7 +66,7 @@ export class RouteFormComponent {
   private setErrorMessage(buttonId: string, className: string, coordinateLength: number): void {
     this.manageClassesModel.removeClass(buttonId, className)
 
-    if (coordinateLength > 3) {
+    if (coordinateLength > 2) {
       this.showWarningMessage = true  
       this.disabled = true  
     }

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"
 import { HttpClient } from '@angular/common/http'
-import { Observable } from "rxjs"
+import { Observable, catchError, retry, throwError } from "rxjs"
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,21 @@ export class RoutesListService {
 
   getRoute(data: {}): Observable<{}> {
     return this.httpClient
-      .get(this.url, data)
+      .get(this.url, data).pipe(
+        retry(3),
+        catchError(this.handleError())
+      )
   }
   
-  getLastRoutes(): Observable<{}> {
+  getLastRoutes(): Observable<Object> {
     return this.httpClient
-      .get(this.url)
+      .get(this.url).pipe(
+        retry(3),
+        catchError(this.handleError())
+      )
+  }
+
+  private handleError(): any {
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }
