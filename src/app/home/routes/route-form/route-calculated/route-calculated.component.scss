@@ -3,18 +3,20 @@
 .route-calculated {
   width: 510px;
   background: $white;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 15px 15px;
   padding: 16px 0px;
-  margin: 96px 0px 64px 0px;
+  margin-top: 96px;
 
   .header {
-    padding: 0px 16px 3px;
+    padding: 0px 16px 16px 16px;
     position: relative;
+    margin-bottom: 8px;
+    border-bottom: solid 1px $alto;
 
     button {
       position: absolute;
       right: 8px;
-      bottom: 50px;
+      bottom: 40px;
 
       i {
         font-size: 20px;
@@ -32,16 +34,33 @@
     p {
       word-spacing: 0px;
       color: $regentGray;
-      font-size: 17px;
+      font-size: 12px;
       margin: 0;
-      margin-top: 16px;
     }
   }
 
   .route-calculated-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom: 12px;
+    padding: 0px 16px;
+
+    p {
+      font-weight: 700;
+      color: $mineShaft;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    span {
+      color: $regentGray;
+      font-size: 14px;
+    }
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
   }
 }
