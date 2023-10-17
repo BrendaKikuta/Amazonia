@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { ManageClassesModel } from '../models/manage-classes.model';
+import { ManageClassesModel } from '../../models/manage-classes.model';
 import { RoutesListService } from '../routes-list.service';
 
 @Component({

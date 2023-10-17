@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
-import { RoutesListService } from '../routes-list.service'
-import { DroneRoute } from '../interfaces/routes.interfaces'
+
+import { DroneRoute } from '../../interfaces/routes.interfaces'
 import { RoutesListModel } from './routes-list.model'
 import { NgxPaginationModule } from 'ngx-pagination'
-import { ManageClassesModel } from '../models/manage-classes.model'
+import { ManageClassesModel } from '../../models/manage-classes.model'
+import { RoutesListService } from '../routes-list.service'
 
 @Component({
   standalone: true,
@@ -16,6 +17,8 @@ import { ManageClassesModel } from '../models/manage-classes.model'
 })
 
 export class RoutesListComponent implements OnInit {
+  @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>()
+  
   manageClassesModel: ManageClassesModel = new ManageClassesModel()
 
   constructor(private routesListService: RoutesListService) {}
@@ -38,6 +41,8 @@ export class RoutesListComponent implements OnInit {
           time: this.routesListModel.getRouteTime(item[1])
         })
       })
+
+      this.loading.emit(true)
     })
   }
 

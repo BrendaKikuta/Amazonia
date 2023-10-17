@@ -1,15 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core'; 
+import { Component } from '@angular/core';
 
-import { RoutesListComponent } from './routes-list/routes-list.component';
-import { RouteFormComponent } from './route-form/route-form.component';
+import { RoutesComponent } from './routes/routes.component';
+import { LoaderComponent } from '../shared/loader/loader.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RoutesListComponent, RouteFormComponent],
+  imports: [CommonModule, LoaderComponent, RoutesComponent],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 
-export class HomeComponent {}
+export class HomeComponent {
+  loading: boolean = true
+
+  getLoading(): void {
+    this.loading = false
+  }
+}
