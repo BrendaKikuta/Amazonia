@@ -1,5 +1,5 @@
 .loader {
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .7);
   position: fixed;
   left: 0;
   right: 0;
@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 99;
 
   img {
     width: 40%;
